@@ -1,8 +1,9 @@
 # PD2 Effective Damage Calculator
 
-[Download ZIP](https://github.com/Doudline/Python/raw/master/projects/pd2_damage_calculator/releases/pd2_effective_dmg.zip)
+[Download ZIP](https://github.com/Doudline/pd2-damage-calculator/raw/main/releases/pd2_effective_dmg.zip)
 
-This utility is designed for the popular Diablo 2 Lord of Destruction mod "Project Diablo 2," and, to a lesser extent, for the base game as well. It addresses the repetitive tedium of pulling out a pen, paper and calculator to determine whether to prioritize skill damage or -% enemy resistance on your equipment.
+
+This utility is designed for the popular Diablo 2 Lord of Destruction mod "Project Diablo 2," and, to a limited extent, for the base game as well. It addresses the tedium of pulling out a pen, paper and calculator to determine whether to prioritize skill damage or -% enemy resistance on your equipment.
 
 To use, click on the download link, extract the folder and double-click on main.exe (Windows Defender/your anti-virus will give you an alert).
 
@@ -16,7 +17,7 @@ Alternatively, you can manually input skill damage and monster resistance.
 
 **Please Note:**
 1. Skill damage and resistances are fetched from text files. While text files are *almost always* correct they are not *necessarily* so, because they are not sourced from the game code.
-2. Only damaging "spell" skills, i.e., those that do not primarily rely on weapon damage, have been implemented. Some skills, such as various Amazon arrows, are included for calculating their ADDED ELEMENTAL DAMAGE ONLY.
+2. Only damaging "spell" skills, i.e., those that do not rely primarily on weapon damage, have been implemented. Some skills, such as various Amazon arrows, are included for calculating their ADDED ELEMENTAL DAMAGE ONLY.
 3. Certain monsters, like most superuniques, are omitted.
 
 I am a beginner programmer; this is my first "serious" project intended for public use. Therefore, please expect bugs and unintended crashes.

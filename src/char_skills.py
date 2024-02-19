@@ -1,6 +1,20 @@
 import numpy as np
 
+
 class CharSkill():
+    """
+    Manually lists and categorizes class skills from Skills.txt
+
+    Initially accomplished through column filters and regex, but Skills.txt is not consistent therefore I consistently had to add/modify data and
+    decided to write it out.
+
+    ama, sor, nec, pal, bar, dru, ass = Amazon, Sorceress, Necromancer, Paladin, Barbarian, Druid, Assassin.
+
+    Multi-component skills have damage components determined by multiple
+    existing skills. The components are typically located in Missiles.txt
+
+    Most categories go unused.
+    """
     def __init__(self):
         self.mastery = ['Javelin and Spear Mastery', 'Fire Mastery', 'Lightning Mastery', 'Cold Mastery', 'Skeleton Mastery', 'Golem Mastery', 'Sword Mastery', 'General Mastery', 'Mace Mastery', 'Pole Arm and Spear Mastery', 'Throwing Mastery', 'Spear Mastery', 'Claw Mastery']
         self.buff = ['Cold Enchant', 'Enchant', 'Might', 'Holy Fire', 'Concentration', 'Holy Freeze', 'Holy Shock', 'Sanctuary', 'Fanaticism','Holy Shield', 'Grim Ward', 'Battle Command', 'Frenzy', 'Werewolf', 'Wearbear', 'Feral Rage', 'Heart of Wolverine', 'Venom']
@@ -12,6 +26,13 @@ class CharSkill():
         self.file = None
 
     def reduce_skill_file(self, skill_file):
+        """
+        Skills.txt contains all skills, including monster
+        skills. Here I filter the file to remove every row that isn't a class skill, to make later manipulations simpler.
+
+        The main filter row[2] is the "charclass" col. i.e. a class skill
+        temp and Shattering Arrow are unimplemented class skills
+        """
         rows_to_delete = []
         for row_index, row in enumerate(skill_file[1:]):
             if not row[2] or "temp" in row[0] or "Shattering Arrow" in row[0]:

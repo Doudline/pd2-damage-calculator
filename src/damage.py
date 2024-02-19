@@ -2,6 +2,7 @@ import numpy as np
 import re
 from PyQt5.QtWidgets import QLabel, QLineEdit
 
+
 class Damage():
     def __init__(self, desc_file, missile_file):
         self.gui = None

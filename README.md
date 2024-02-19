@@ -1,15 +1,15 @@
 # Project Diablo 2 Damage Calculator
 
 ## Overview
-This project is a graphical damage calculator for the Diablo 2: Lord of Destruction mod "Project Diablo 2", designed to help players optimize their builds by accurately calculating damage outputs based on various in-game factors.
+This project is a graphical damage calculator for the Diablo 2: Lord of Destruction mod "Project Diablo 2". It is designed to help players optimize their builds by accurately calculating damage outputs based on in-game factors that go unreflected on the character sheet.
 
 2nd Completed project.
 
 ## Features
 - Graphical User Interface (GUI): A PyQt5-based interface that allows users to select character skills, input skill levels, and choose monsters to calculate damage against.
-- Damage Modifiers: Incorporates character attributes that modify skill damage such as mastery and elemental pierce.
+- Damage Modifiers: Incorporates character attributes that modify skill damage such as mastery, elemental pierce and resistance break.
 - Effective Damage Calculation: Automatically calculates effective damage to monsters based on skill level, monster resistances and damage modifiers.
-- Modularity: Manually input skill damage and monster resistances to test out hypothetical scenarios.
+- Modularity: Allows manual input of skill damage and monster resistances to test out hypothetical scenarios.
 - (Tested on Windows only.)
 
 All data is sourced from the game's text files.
@@ -33,6 +33,7 @@ To run from the source code (Windows):
 
 ## Usage:
 - Run "main.py"
+- Check the "Info" menu on the top left for details.
 
 ## Keywords:
 - NumPY

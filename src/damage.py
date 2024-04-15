@@ -200,7 +200,6 @@ class Damage():
                     widget.setText(str(input))
                     widget.textChanged.connect(self.base_dmg)
 
-
         self.damage_label_row += 1
   
     def effective_resistance(self):
@@ -219,10 +218,8 @@ class Damage():
 
                 if broken_res > 100:
                     self.effective_res = broken_res
-
                 elif broken_res < 0:
                     self.effective_res = broken_res - (pierce // 2)
-
                 elif broken_res < 100:
                     pierced_res = broken_res - pierce
 

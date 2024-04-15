@@ -322,14 +322,27 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>300</y>
-      <width>171</width>
+      <x>556</x>
+      <y>320</y>
+      <width>241</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>** Not yet updated for season 8**</string>
+     <string>** SKILLS AND SYNERGIES UPDATED FOR S9 **</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>350</y>
+      <width>291</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>** Maps: resistance information S9; tier organization S7 **</string>
     </property>
    </widget>
   </widget>

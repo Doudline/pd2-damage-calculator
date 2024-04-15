@@ -62,11 +62,11 @@ class MyGUI(QMainWindow):
 
         "info_break": "What will break immunities:\n\tBattle Cry (Physical)\n\tArctic Blast (Cold)\n\tPoison Creeper (Poison)\n\tAmplify Damage (Physical)\n\tDecrepify (Physical)\n\tLower Resist (Fire/Cold/Lightning/Poison)\n\tConviction (Fire/Cold/Lightning)\n\tSanctuary (Magic)\n\tInferno (Fire)\n\tStatic Field (Lightning)\n\nWhat will not break immunities:\n\t-enemy resistance on gear\n\tCold Mastery\n\tFire Mastery\n\nBreak applies at 1/2 rate (rather than 1/4 in LoD) to break immunities.\n\nSource: https://projectdiablo2.miraheze.org/wiki/Game_Mechanics#Behavior_of_-enemy_resists",
 
-        "info_carryover": "For skills that carry over damage from gear or enchants (e.g. Exploding Arrow), first calculate net damage with the calculator then go into manual entry mode and add the carryover damage.",
+        "info_carryover": "For skills that carry over damage from gear or enchants (e.g. Exploding Arrow), Synergies and Mastery do not apply to the carryover. \n\nUse the following calculation method: calculate the net skill damage including Synergies and Mastery but without Pierce and Break, and note down the damage; go into manual mode, input the calculation + carryover damage as base damage and do NOT include Synergies and Mastery but DO include Pierce and Break.",
         
         "info_su": "Superuniques aren't neatly categorized in the text files, therefore adding their resistance information to every zone/map would be a major time investment.\n\nFor this reason I have only included SUs that are frequently farmed in PD2.",
 
-        "info_lod": "To use this tool with the base game (D2R or LoD without PD2), pay attention to the following:\n\t-don't use skill selection; manually input the damage instead\n\t-monster base resistances are generally identical except for ubers;\n\tconsider manually entering resistances\n\t-break applies at 1/4 rate to break immunities in LoD, therefore enter\n\tonly half your break value\n\t-traps benefit from elemental pierce in D2R; as I have greyed out the\n\tpierce entry for sentries and mastery doesn't apply, the calculator isn't\n\tuseful in this case."}
+        "info_lod": "To use this tool with the base game (D2R or LoD without PD2), pay attention to the following:\n\t-don't use skill selection; manually input the damage instead\n\t-base monster resistances are generally identical except for ubers;\n\tconsider manually entering resistances\n\t-break applies at 1/4 rate to break immunities in LoD, therefore enter\n\tonly half your break value\n\t-traps benefit from elemental pierce in D2R; as I have greyed out the\n\tpierce entry for sentries and mastery doesn't apply, the calculator isn't\n\tuseful in this case."}
 
         option = self.sender().objectName() 
         info_text = self.info_dic[option]
@@ -112,10 +112,8 @@ class MyGUI(QMainWindow):
             self.mon_type_label.setVisible(True)
             self.mon_type_cbox.setVisible(True)
             self.mon_button.setText("X")
-        
 
         self.mob_resistance()
-            
 
     def class_skills(self):
         self.delete_widgets()
@@ -159,12 +157,12 @@ class MyGUI(QMainWindow):
             if not self.synergies:
                 self.synergies = re.findall(r"'(.+?)'(?=\D*(\d))", (self.skill_row[232]))
                 
-            synergy_widgets_list = [(QLabel(f"'{synergy}'  hlvl:"), QLineEdit("0")) for synergy, _ in self.synergies]
+            synergy_widgets_list = [(QLabel(f"'{synergy}'  hlvl:"), QLineEdit("20")) for synergy, _ in self.synergies]
 
             if self.skill_choice == "Cobra Strike":
-                synergy_widgets_list = [(QLabel("'Venom'  hlvl:"), QLineEdit("0"))]
+                synergy_widgets_list = [(QLabel("'Venom'  hlvl:"), QLineEdit("20"))]
             if self.skill_choice == "Royal Strike":
-                synergy_widgets_list = [(QLabel("'Fists of Fire'  hlvl:"), QLineEdit("0")), (QLabel("'Claws of Thunder'  hlvl:"), QLineEdit("0")),(QLabel("'Blades of Ice'  hlvl:"), QLineEdit("0"))]
+                synergy_widgets_list = [(QLabel("'Fists of Fire'  hlvl:"), QLineEdit("20")), (QLabel("'Claws of Thunder'  hlvl:"), QLineEdit("20")),(QLabel("'Blades of Ice'  hlvl:"), QLineEdit("20"))]
             
             self.add_widgets(synergy_widgets_list, self.skills_grid, 1, [1, 2], Qt.AlignTop, QIntValidator(0,20))
     
@@ -193,9 +191,9 @@ class MyGUI(QMainWindow):
         self.ele_widgets_list = []
         self.ele_widgets_list.append((QLabel(), QLabel("<u>Mastery</u>"), QLabel("<u>Pierce</u>"), QLabel("<u>Break %</u> (?)"), QLabel("<u>Base Monster Resistance</u>")))
 
-        self.ele_widgets_list[0][1].setToolTip(r"Press 8 ingame.")
-        self.ele_widgets_list[0][2].setToolTip(r"Press 8 ingame.")
-        self.ele_widgets_list[0][3].setToolTip(r"For each element, the total -%res from every skill that can break immunities. See this page: https://projectdiablo2.miraheze.org/wiki/Game_Mechanics.")
+        self.ele_widgets_list[0][1].setToolTip(r"+% Elemental damage. Press 8 ingame.")
+        self.ele_widgets_list[0][2].setToolTip(r"-% Enemy ele. resistance.  Press 8 ingame.")
+        self.ele_widgets_list[0][3].setToolTip(r"For each element, the total -%res from every skill that can break immunities. See the info menu.")
 
         for ele_type in self.ele_types_list:
             mob_res_widget = QLineEdit("0") 
@@ -223,9 +221,9 @@ class MyGUI(QMainWindow):
         self.ele_widgets_list = []
         self.ele_widgets_list.append((QLabel(), QLabel("<u>Mastery</u>"), QLabel("<u>Pierce</u>"), QLabel("<u>Break %</u> (?)"), QLabel("<u>Base Monster Resistance</u>")))
 
-        self.ele_widgets_list[0][1].setToolTip(r"Press 8 ingame.")
-        self.ele_widgets_list[0][2].setToolTip(r"Press 8 ingame.")
-        self.ele_widgets_list[0][3].setToolTip(r"For each element, the total -%res from every skill that can break immunities. See this page: https://projectdiablo2.miraheze.org/wiki/Game_Mechanics.")
+        self.ele_widgets_list[0][1].setToolTip(r"+% Elemental damage. Press 8 ingame.")
+        self.ele_widgets_list[0][2].setToolTip(r"-% Enemy ele. resistance.  Press 8 ingame.")
+        self.ele_widgets_list[0][3].setToolTip(r"For each element, the total -%res from every skill that can break immunities. See the info menu.")
 
         for ele_type in self.ele_types_list:
             mob_res_widget = QLineEdit("0") 
@@ -288,6 +286,7 @@ class MyGUI(QMainWindow):
         self.mon_cbox.setVisible(False)
 
         self.tier_choice = self.tier_cbox.currentText()
+        # Conditional because Dungeons don't have sub-areas
         if self.tier_choice and self.tier_choice != "Dungeon":
             self.area_label.setVisible(True)
             self.area_cbox.setVisible(True)
@@ -398,7 +397,8 @@ class MyGUI(QMainWindow):
 
         self.damage_widgets_list = []
         self.damage_widgets_list.append((QLabel(), QLabel("<u>Min. Base Dmg</u>"), QLabel("<u>Max. Base Dmg</u>"), QLabel(), QLabel("<u>Min. Net Dmg</u>"), QLabel("<u>Max. Net Dmg</u>"), QLabel(), QLabel("<u>Effective Resistance</u>"), QLabel(), QLabel("<u>Effective Damage</u>")))
-        self.tooltips = ["", "After synergies, before mastery", "After synergies, before mastery", "", "Base * (1 + (mastery / 100))", "Base * (1 + (mastery / 100))", "", "Base resistance modified by break and pierce. See: https://projectdiablo2.miraheze.org/wiki/Game_Mechanics#Behavior_of_-enemy_resists", "", "Net * (1 - (effective monster resistance / 100))"]
+        # Need duplicates because we have 2 widgets (min/max) of each
+        self.tooltips = ["", "After synergies, before mastery", "After synergies, before mastery", "", "After synergies and mastery. Base * (1 + (mastery / 100))", "After synergies and mastery. Base * (1 + (mastery / 100))", "", "Base resistance modified by break and pierce. See: https://projectdiablo2.miraheze.org/wiki/Game_Mechanics#Behavior_of_-enemy_resists", "", "Net * (1 - (effective monster resistance / 100))"]
 
         for widget, txt in zip(self.damage_widgets_list[0], self.tooltips):
             widget.setToolTip(txt)

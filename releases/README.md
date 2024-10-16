@@ -2,8 +2,9 @@
 
 [Download ZIP](https://github.com/Doudline/pd2-damage-calculator/raw/main/releases/pd2_effective_dmg.zip)
 
+**Updated for Season 10 Beta patch 1**
 
-This utility is designed for the popular Diablo 2 Lord of Destruction mod "Project Diablo 2," and, to a limited extent, for the base game as well. It addresses the tedium of pulling out a pen, paper and calculator to determine whether to prioritize skill damage or -% enemy resistance on your equipment.
+This utility is designed for the popular Diablo 2 Lord of Destruction mod "Project Diablo 2". It addresses the tedium of pulling out a pen, paper and calculator to determine whether to prioritize skill damage or -% enemy resistance on your equipment.
 
 To use, click on the download link, extract the folder and double-click on main.exe (Windows Defender/your anti-virus will give you an alert).
 

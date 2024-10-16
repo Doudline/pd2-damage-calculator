@@ -1,5 +1,7 @@
 # Project Diablo 2 Damage Calculator
 
+![](assets/showcase.png)
+
 ## Overview
 This project is a graphical damage calculator for the Diablo 2: Lord of Destruction mod "Project Diablo 2". It is designed to help players optimize their builds by accurately calculating damage outputs based on in-game factors that go unreflected on the character sheet.
 

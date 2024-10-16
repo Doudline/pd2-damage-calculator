@@ -134,7 +134,6 @@ class MyGUI(QMainWindow):
         if self.skill_choice and self.skill_button.text() == "X":
             skill_lvl_label = QLabel(f"'{self.skill_choice}'  slvl:")
             skill_lvl_input = QLineEdit("1")
-
             skill_lvl_input.textChanged.connect(self.dmg.base_dmg)
 
             validator = QIntValidator(1, 60)
@@ -188,6 +187,35 @@ class MyGUI(QMainWindow):
                         break
                 self.dmg_types_list.append(f"{dmg_type}: ")
         
+        #self.sorc_mastery_widget()
+        self.ele_widgets_helper()
+        self.damage_widgets()
+
+        """     
+        def sorc_mastery_widget(self):
+        element = self.ele_types_list[-1]
+
+        if self.class_choice != "sor" or not element:
+            return
+
+        mastery_label = QLabel(f"'{element} Mastery'  slvl:")
+        mastery_input = QLineEdit("20")
+        mastery_input.textChanged.connect(self.dmg.base_dmg)
+
+        validator = QIntValidator(0, 60)
+        mastery_input.setValidator(validator)
+        
+        self.skills_grid.addWidget(mastery_label, 1, 0, Qt.AlignTop)
+        self.skills_grid.addWidget(mastery_input, 1, 1, Qt.AlignTop) """
+
+    def ele_widgets_without_skill_selection(self):
+        self.ele_types_list = ["Physical", "Fire", "Cold", "Lightning", "Poison", "Magic"]
+        self.dmg_types_list = self.ele_types_list
+
+        self.ele_widgets_helper()
+        self.damage_widgets()
+
+    def ele_widgets_helper(self):
         self.ele_widgets_list = []
         self.ele_widgets_list.append((QLabel(), QLabel("<u>Mastery</u>"), QLabel("<u>Pierce</u>"), QLabel("<u>Break %</u> (?)"), QLabel("<u>Base Monster Resistance</u>")))
 
@@ -197,11 +225,8 @@ class MyGUI(QMainWindow):
 
         for ele_type in self.ele_types_list:
             mob_res_widget = QLineEdit("0") 
-            """ if self.mon_type_choice or self.mon_button.text() == "X":
-                mob_res_widget.setReadOnly(True)
-                mob_res_widget.setStyleSheet("border: none; background-color: #f0f0f0; color: black;") """
-
             pierce_widget = QLineEdit("0")    
+
             if self.skill_choice and ("Hydra" in self.skill_choice or "Sentry" in self.skill_choice):
                 pierce_widget.setReadOnly(True)
                 pierce_widget.setStyleSheet("border: none; background-color: #f0f0f0; color: black;")
@@ -210,42 +235,8 @@ class MyGUI(QMainWindow):
                 self.ele_widgets_list.append((QLabel(f"{ele_type}: "), QLabel(), pierce_widget, QLineEdit("0"), mob_res_widget))
             else:
                 self.ele_widgets_list.append((QLabel(f"{ele_type}: "), QLineEdit("0"), pierce_widget, QLineEdit("0"), mob_res_widget))
-        
+
         self.add_widgets(self.ele_widgets_list, self.elemental_grid, 0, [0, 1, 2, 3, 4], Qt.AlignTop, QIntValidator(0, 1000))
-        self.damage_widgets()
-
-    def ele_widgets_without_skill_selection(self):
-        self.ele_types_list = ["Physical", "Fire", "Cold", "Lightning", "Poison", "Magic"]
-        self.dmg_types_list = self.ele_types_list
-
-        self.ele_widgets_list = []
-        self.ele_widgets_list.append((QLabel(), QLabel("<u>Mastery</u>"), QLabel("<u>Pierce</u>"), QLabel("<u>Break %</u> (?)"), QLabel("<u>Base Monster Resistance</u>")))
-
-        self.ele_widgets_list[0][1].setToolTip(r"+% Elemental damage. Press 8 ingame.")
-        self.ele_widgets_list[0][2].setToolTip(r"-% Enemy ele. resistance.  Press 8 ingame.")
-        self.ele_widgets_list[0][3].setToolTip(r"For each element, the total -%res from every skill that can break immunities. See the info menu.")
-
-        for ele_type in self.ele_types_list:
-            mob_res_widget = QLineEdit("0") 
-
-            """ 
-            if self.mon_type_choice or self.mon_button.text() == "X":
-                mob_res_widget.setReadOnly(True)
-                mob_res_widget.setStyleSheet("border: none; background-color: #f0f0f0; color: black;")     
-            """  
-
-            pierce_widget = QLineEdit("0")    
-            if self.skill_choice and ("Hydra" in self.skill_choice or "Sentry" in self.skill_choice):
-                pierce_widget.setReadOnly(True)
-                pierce_widget.setStyleSheet("border: none; background-color: #f0f0f0; color: black;")          
-
-            if ele_type == "Physical":
-                self.ele_widgets_list.append((QLabel(f"{ele_type}:    "), QLabel(), pierce_widget, QLineEdit("0"), mob_res_widget))
-            else:
-                self.ele_widgets_list.append((QLabel(f"{ele_type}:    "), QLineEdit("0"), pierce_widget, QLineEdit("0"), mob_res_widget))
-        
-        self.add_widgets(self.ele_widgets_list, self.elemental_grid, 0, [0, 1, 2, 3, 4], Qt.AlignTop, QIntValidator(0, 1000))
-        self.damage_widgets()
 
     def monster_type_selection(self):
         self.tier_label.setVisible(False)

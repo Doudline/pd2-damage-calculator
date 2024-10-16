@@ -9,6 +9,7 @@ class Damage():
         self.desc_file = desc_file
         self.missile_file = missile_file
         self.skill_slvl = None
+        self.sorc_mastery_slvl = None
         self.hit_shift_dic = {shift: 1 / (2 ** (8 - shift)) for shift in range(8, -1, -1)}
 
     def set_gui(self, ui):
@@ -21,6 +22,8 @@ class Damage():
         self.max_base_dmg = None
 
         if self.gui.skill_choice and self.gui.skill_button.text() == "X":
+            """ if self.gui.class_choice == "sor":
+                self.sorc_mastery_slvl = self.allowed_range(self.gui.skills_grid, 1, 1, 0, 60) """
             self.skill_slvl = self.allowed_range(self.gui.skills_grid, 0, 1, 0, 60)
             self.skill_row = self.gui.skills.file[self.gui.skill_row_number]
             self.hit_shift = self.hit_shift_dic[int(self.skill_row[np.where(self.gui.skills.file[0, :] == "HitShift")[0][0]])]

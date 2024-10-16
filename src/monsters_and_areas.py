@@ -32,7 +32,7 @@ class MonsterAreas:
         self.key_holders_list = [("bloodraven", "Blood Raven"), ("countess", "Countess"), ("summoner", "The Summoner"), ("bloodwitch", "Bloodwitch the Wild"), ("izual", "Izual"), ("nihlathakboss", "Nihlathak")]
         self.super_uniques_list = [("councilmember2", "Geleb Flamefinger"), ("councilmember1", "Toorc Icefist"), ("councilmember1", "Ismail Vilehand"), ("overseer1", "Shenk"), ("minion1", "Eldritch"),("reanimatedhorde5", "Pindle")]
         self.act_bosses_list = [("andariel", "Andariel"), ("duriel", "Duriel"), ("mephisto", "Mephisto"), ("diablo", "Diablo"), ("baalcrab", "Baal")]
-        self.ubers_list = [("uberduriel", "Duriel"), ("uberandariel", "Lilith"), ("uberizual", "Izual"), ("ubermephisto", "Mephisto"), ("uberdiablo", "Diablo"), ("uberbaal", "Baal"), ("rathmaPoison", "Mendeln"), ("rathmaBone", "Rathma"), ("diabloclone", "Diablo Clone")]
+        self.ubers_list = [("uberduriel", "Duriel"), ("uberandariel", "Lilith"), ("uberizual", "Izual"), ("ubermephisto", "Mephisto"), ("uberdiablo", "Diablo"), ("uberbaal", "Baal"), ("rathmaPoison", "Mendeln"), ("rathmaBone", "Rathma"), ("uberdiablonew", "Diablo Clone")]
 
         if not self.map_mobs_dic:
             self.map_zones()
